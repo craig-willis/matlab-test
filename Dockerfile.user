@@ -1,0 +1,14 @@
+# Build user-defined layer
+FROM matlab-base 
+
+ADD matlab_installer_input_user.txt /matlab_installer_input_user.txt
+
+# Now install any non-base products
+RUN mkdir /tmp/matlab-install && cd /tmp/matlab-install  \
+    && wget -O /tmp/network.lic http://localhost:9090/network.lic \
+    && wget --quiet http://localhost:9090/R2019b_Linux.tar.gz -O - | tar -xz \
+    && ./install  -mode silent \
+               -inputFile /matlab_installer_input_user.txt \
+               -licensePath /tmp/network.lic  \
+    && find /tmp/matlab-install -delete \
+    && rm  /tmp/network.lic

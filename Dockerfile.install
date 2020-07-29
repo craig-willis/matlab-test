@@ -1,0 +1,7 @@
+#### Install MATLAB in a multi-build style ####
+FROM matlab-base 
+
+# Add MATLAB installer to the image
+
+RUN mkdir /matlab-install && cd /matlab-install &&  \
+    wget http://localhost:9090/R2019b_Linux.tar.gz -O - | tar -xz 

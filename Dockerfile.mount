@@ -1,0 +1,10 @@
+# syntax=docker/dockerfile:experimental
+FROM matlab-base
+
+
+# Bug in 18.06 COPY/ADD
+RUN wget -O /tmp/network.lic http://localhost:9090/network.lic && \
+    wget -O /matlab_installer_input_user.txt http://localhost:9090/matlab_installer_input_user.txt
+
+
+RUN --mount=type=bind,target=/matlab-install,source=/matlab-install/,from=matlab-install cd /matlab-install &&  ./install -mode silent -inputFile /matlab_installer_input_user.txt -licensePath /tmp/network.lic 
