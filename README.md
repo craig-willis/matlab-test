@@ -1,6 +1,12 @@
 # Building Extensible MATLAB images with Docker
 
-Repository to test MATLAB image building using pre-BuildKit and BuildKit approaches.
+Repository to test MATLAB image building using:
+* Pre-buildkit Docker build relying on downloading installation media from local webserver
+* BuildKit experimental build with `--mount` support and installation media available from secondary image
+
+## Prerequisites:
+* Access to MATLAB installation media in ISO format
+* Access to MATLAB license including `fileInstallationKey`
 
 ## Download installation media and license
 
@@ -8,6 +14,7 @@ Repository to test MATLAB image building using pre-BuildKit and BuildKit approac
 * Download the MATLAB installation media in ISO format
 * Convert ISO to `tar.gz` archive
 
+In the end, you should have:
 ```
 ls /matlab
    R2019b_Linux.iso
