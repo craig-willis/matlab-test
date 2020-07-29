@@ -1,5 +1,6 @@
-# matlab-test
-Repository to test MATLAB image building
+# Building Extensible MATLAB images with Docker
+
+Repository to test MATLAB image building using pre-BuildKit and BuildKit approaches.
 
 ## Download installation media and license
 
